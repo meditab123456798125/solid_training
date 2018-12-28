@@ -1,35 +1,18 @@
 package com.meditab.training.isp.exercise;
 
-public interface Door_LUOC
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+public class SensingDoor implements LockUnlock, OpenClose, ProximityCallBack
 {
-    void lock();
-	
-    void unlock();
-
-    void open();
-
-    void close();
-
-}
-public interface timeOut
-{
-	
-    void timeOutCallback();
-
-}
-public interface proximity
-{
-	
-    void proximityCallback();
-	
-}
-
-public class Door implements Door_LUOC
-{
-	private boolean _locked;
+    private boolean _locked;
     private boolean _opened;
-	
-	@Override
+
+    public SensingDoor(Sensor sensor)
+    {
+        sensor.register(this);
+    }
+
+    @Override
     public void lock()
     {
         _locked = true;
@@ -54,5 +37,11 @@ public class Door implements Door_LUOC
     {
         _opened = false;
     }
-	
+
+
+    @Override
+    public void proximityCallback()
+    {
+        _opened = true;
+    }
 }

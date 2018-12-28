@@ -2,9 +2,9 @@ package com.meditab.training.isp.exercise;
 
 import java.util.TimerTask;
 
-public class Timer
+public class Timer implements TimedOutCallBack
 {
-    public void register(long timeOut, final timeOut time)
+    public void register(long timeOut)
     {
         java.util.Timer timerUtility = new java.util.Timer();
         timerUtility.schedule(new TimerTask()
@@ -12,7 +12,7 @@ public class Timer
             @Override
             public void run()
             {
-                time.timeOutCallback();
+                timeOutCallback();
             }
         }, timeOut);
     }
