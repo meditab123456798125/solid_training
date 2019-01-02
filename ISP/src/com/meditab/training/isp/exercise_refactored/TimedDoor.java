@@ -2,7 +2,7 @@ package com.meditab.training.isp.exercise;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class TimedDoor implements TimedOutCallBack, LockUnlock, OpenClose
+public class TimedDoor implements Door
 {
     private static final int TIME_OUT = 100;
     private boolean _locked;
@@ -45,4 +45,9 @@ public class TimedDoor implements TimedOutCallBack, LockUnlock, OpenClose
         _locked = true;
     }
 
+    @Override
+    public void proximityCallback()
+    {
+        throw new NotImplementedException();
+    }
 }

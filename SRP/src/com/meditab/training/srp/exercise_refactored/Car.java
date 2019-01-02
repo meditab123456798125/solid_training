@@ -1,4 +1,5 @@
-package com.meditab.training.srp.exercise;
+package assignment_day3_1;
+
 
 public class Car
 {
@@ -26,9 +27,5 @@ public class Car
     public String getBrand()
     {
         return _brand;
-    }
-    
-    public toStringCarName() {
-    	return _brand + " " + _model;
     }
 }

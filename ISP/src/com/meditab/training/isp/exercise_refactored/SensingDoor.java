@@ -2,7 +2,7 @@ package com.meditab.training.isp.exercise;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-public class SensingDoor implements LockUnlock, OpenClose, ProximityCallBack
+public class SensingDoor implements Door
 {
     private boolean _locked;
     private boolean _opened;
@@ -38,6 +38,11 @@ public class SensingDoor implements LockUnlock, OpenClose, ProximityCallBack
         _opened = false;
     }
 
+    @Override
+    public void timeOutCallback()
+    {
+        throw new NotImplementedException();
+    }
 
     @Override
     public void proximityCallback()

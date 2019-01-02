@@ -7,25 +7,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
 import java.net.URL;
 import java.util.Base64;
 
 public class EncodingModule
 {
-    public void encodeWithFiles(Reader reader, String stringReadFile, Writer writer, String stringWriteFile) throws IOException
+    public void encodeWithFiles() throws IOException
     {
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
         try {
-            if(reader instanceof BufferedReader) {
-            	reader = new BufferedReader(
-                        new FileReader(stringReadFile));
-            }
-        	if(writer instanceof BufferedWriter) {
-        		writer = new BufferedWriter(
-                        new FileWriter(stringWriteFile));
-        	}
-            
+            reader = new BufferedReader(
+                new FileReader("DIP/src/com/meditab/training/dip/exercise/beforeEncryption.txt"));
+            writer = new BufferedWriter(
+                new FileWriter("DIP/src/com/meditab/training/dip/exercise/afterEncryption.txt"));
             String aLine;
             while ((aLine = reader.readLine()) != null) {
                 String encodedLine = Base64.getEncoder().encodeToString(aLine.getBytes());
@@ -41,8 +36,10 @@ public class EncodingModule
         }
     }
 
-    public void encodeBasedOnNetworkAndDatabase(URL url, MyDatabase database) throws IOException
+    public void encodeBasedOnNetworkAndDatabase() throws IOException
     {
+        URL url;
+        url = new URL("http", "myfirstappwith.appspot.com", "/index.html");
         InputStream in;
         in = url.openStream();
         InputStreamReader reader = new InputStreamReader(in);
@@ -55,6 +52,7 @@ public class EncodingModule
         }
         String inputString = inputString1.toString();
         String encodedString = Base64.getEncoder().encodeToString(inputString.getBytes());
+        MyDatabase database = new MyDatabase();
         database.write(encodedString);
     }
 }

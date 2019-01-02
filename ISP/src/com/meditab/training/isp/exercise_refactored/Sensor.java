@@ -2,13 +2,13 @@ package com.meditab.training.isp.exercise;
 
 import java.util.Random;
 
-public class Sensor implements ProximityCallBack
+public class Sensor
 {
-    public void register()
+    public void register(Door door)
     {
         while (true) {
             if (isPersonClose()) {
-                proximityCallback();
+                door.proximityCallback();
                 break;
             }
         }
